@@ -8,6 +8,7 @@ public class CustomerDTO {
 
     @JsonProperty("firstname")
     private String firstName;
+    @JsonProperty("lastname")
     private String lastName;
 
     @JsonProperty("customer_url")
