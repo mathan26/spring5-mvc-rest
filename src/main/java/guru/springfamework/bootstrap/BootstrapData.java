@@ -38,6 +38,7 @@ public class BootstrapData  implements CommandLineRunner {
         customer2.setId(2l);
         customer2.setFirstName("Sam");
         customer2.setLastName("Axe");
+        customerRepository.save(customer2);
     }
 
     private void loadCategories() {
