@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.xml.ws.Response;
 
 @Controller
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -20,26 +20,35 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @GetMapping
+    public ResponseEntity<CustomerListDTO> getListofCustomers(){
 
-    @GetMapping("/customers")
-    public ResponseEntity<CustomerListDTO> getListOfCustomers(){
-        return new ResponseEntity<CustomerListDTO>(new CustomerListDTO(customerService.getAllCustomers()), HttpStatus.OK);
+        return new ResponseEntity<CustomerListDTO>(new CustomerListDTO(customerService.getAllCustomers()),
+                HttpStatus.OK);
+
     }
 
-    @GetMapping("/customer/{id}")
+    @GetMapping({"/{id}"})
     public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id){
         return new ResponseEntity<CustomerDTO>(customerService.getCustomerById(id),HttpStatus.OK);
     }
 
-    @PostMapping("/customers")
+
+    @PostMapping
     public ResponseEntity<CustomerDTO> createNewCustomer(@RequestBody CustomerDTO customerDTO){
         return new ResponseEntity<CustomerDTO>(customerService.createNewCustomer(customerDTO),
                 HttpStatus.CREATED);
     }
 
-    @PutMapping({"/customer/{id}"})
+    @PutMapping({"/{id}"})
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO){
         return new ResponseEntity<CustomerDTO>(customerService.saveCustomerByDTO(id, customerDTO),
+                HttpStatus.OK);
+    }
+
+    @PatchMapping({"/{id}"})
+    public ResponseEntity<CustomerDTO> patchCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO){
+        return new ResponseEntity<CustomerDTO>(customerService.patchCustomer(id, customerDTO),
                 HttpStatus.OK);
     }
 }

@@ -30,14 +30,14 @@ public class BootstrapData  implements CommandLineRunner {
         //given
         Customer customer1 = new Customer();
         customer1.setId(1l);
-        customer1.setFirstName("Michale");
-        customer1.setLastName("Weston");
+        customer1.setFirstname("Michale");
+        customer1.setLastname("Weston");
         customerRepository.save(customer1);
 
         Customer customer2 = new Customer();
         customer2.setId(2l);
-        customer2.setFirstName("Sam");
-        customer2.setLastName("Axe");
+        customer2.setFirstname("Sam");
+        customer2.setLastname("Axe");
         customerRepository.save(customer2);
     }
 

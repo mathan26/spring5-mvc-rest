@@ -55,20 +55,20 @@ public class CustomerServiceImplIT {
         Customer originalCustomer = customerRepository.getOne(id);
         assertNotNull(originalCustomer);
         //save original first name
-        String originalFirstName = originalCustomer.getFirstName();
-        String originalLastName = originalCustomer.getLastName();
+        String originalFirstName = originalCustomer.getFirstname();
+        String originalLastName = originalCustomer.getLastname();
 
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setFirstName(updatedName);
+        customerDTO.setFirstname(updatedName);
 
         customerService.patchCustomer(id, customerDTO);
 
         Customer updatedCustomer = customerRepository.findById(id).get();
 
         assertNotNull(updatedCustomer);
-        assertEquals(updatedName, updatedCustomer.getFirstName());
-        assertThat(originalFirstName, not(equalTo(updatedCustomer.getFirstName())));
-        assertThat(originalLastName, equalTo(updatedCustomer.getLastName()));
+        assertEquals(updatedName, updatedCustomer.getFirstname());
+        assertThat(originalFirstName, not(equalTo(updatedCustomer.getFirstname())));
+        assertThat(originalLastName, equalTo(updatedCustomer.getLastname()));
     }
 
     @Test
@@ -80,20 +80,20 @@ public class CustomerServiceImplIT {
         assertNotNull(originalCustomer);
 
         //save original first/last name
-        String originalFirstName = originalCustomer.getFirstName();
-        String originalLastName = originalCustomer.getLastName();
+        String originalFirstName = originalCustomer.getFirstname();
+        String originalLastName = originalCustomer.getLastname();
 
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setLastName(updatedName);
+        customerDTO.setLastname(updatedName);
 
         customerService.patchCustomer(id, customerDTO);
 
         Customer updatedCustomer = customerRepository.findById(id).get();
 
         assertNotNull(updatedCustomer);
-        assertEquals(updatedName, updatedCustomer.getLastName());
-        assertThat(originalFirstName, equalTo(updatedCustomer.getFirstName()));
-        assertThat(originalLastName, not(equalTo(updatedCustomer.getLastName())));
+        assertEquals(updatedName, updatedCustomer.getLastname());
+        assertThat(originalFirstName, equalTo(updatedCustomer.getFirstname()));
+        assertThat(originalLastName, not(equalTo(updatedCustomer.getLastname())));
     }
 
     private Long getCustomerIdValue(){

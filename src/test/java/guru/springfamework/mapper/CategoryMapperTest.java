@@ -17,15 +17,15 @@ public class CategoryMapperTest {
     public void customerToCustomerDTO() throws Exception {
         //given
         Customer customer = new Customer();
-        customer.setFirstName(FIRSTNAME);
-        customer.setLastName(LASTNAME);
+        customer.setFirstname(FIRSTNAME);
+        customer.setLastname(LASTNAME);
 
         //when
         CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
 
         //then
-        assertEquals(FIRSTNAME, customerDTO.getFirstName());
-        assertEquals(LASTNAME, customerDTO.getLastName());
+        assertEquals(FIRSTNAME, customerDTO.getFirstname());
+        assertEquals(LASTNAME, customerDTO.getLastname());
 
     }
 
