@@ -3,12 +3,15 @@ package guru.springfamework.controllers.v1;
 import guru.springfamework.api.v1.model.CustomerDTO;
 import guru.springfamework.api.v1.model.CustomerListDTO;
 import guru.springfamework.services.CustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.xml.ws.Response;
 
+@Api(description = "This is my Customer Controller")
 @RestController
 @RequestMapping(CustomerController.BASE_URL)
 public class CustomerController {
@@ -21,6 +24,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @ApiOperation(value = "Get all the customers using  this endpoint")
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO getListofCustomers(){
